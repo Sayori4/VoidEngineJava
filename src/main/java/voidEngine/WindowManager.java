@@ -1,7 +1,9 @@
 package voidEngine;
 
+import engineTester.MainGameLoop;
 import org.lwjgl.glfw.*;
 import org.lwjgl.opengl.GL;
+import voidEngine.utils.EngineSettings;
 
 import static org.lwjgl.glfw.Callbacks.*;
 import static org.lwjgl.glfw.GLFW.*;
@@ -11,6 +13,7 @@ import static org.lwjgl.system.MemoryUtil.NULL;
 
 public class WindowManager {
     private long window;
+    private final EngineSettings config = MainGameLoop.getConfig();
     public void createWindow() {
         GLFWErrorCallback.createPrint(System.err).set();
 
@@ -21,10 +24,13 @@ public class WindowManager {
         glfwDefaultWindowHints();
         glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
         glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
+        GLFW.glfwWindowHint(GLFW.GLFW_CONTEXT_VERSION_MAJOR, 3);
+        GLFW.glfwWindowHint(GLFW.GLFW_CONTEXT_VERSION_MINOR, 2);
+        //GLFW.glfwWindowHint(GLFW.GLFW_OPENGL_PROFILE, GLFW.GLFW_OPENGL_CORE_PROFILE);
 
         //creates the window
         //to change name,width and height of window change them inside the engine settings
-        window = glfwCreateWindow(EngineSettings.WIDTH, EngineSettings.HEIGHT, EngineSettings.WindowName, NULL, NULL);
+        window = glfwCreateWindow(config.getWIDTH(),config.getHEIGHT(),config.getWindowName(), NULL, NULL);
 
         if (window == NULL) {
             throw new RuntimeException("Failed to create GLFW window");
