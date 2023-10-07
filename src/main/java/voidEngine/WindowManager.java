@@ -3,6 +3,7 @@ package voidEngine;
 import engineTester.MainGameLoop;
 import org.lwjgl.glfw.*;
 import org.lwjgl.opengl.GL;
+import org.lwjgl.opengl.GL11;
 import voidEngine.utils.EngineSettings;
 
 import static org.lwjgl.glfw.Callbacks.*;
@@ -26,7 +27,8 @@ public class WindowManager {
         glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
         GLFW.glfwWindowHint(GLFW.GLFW_CONTEXT_VERSION_MAJOR, 3);
         GLFW.glfwWindowHint(GLFW.GLFW_CONTEXT_VERSION_MINOR, 2);
-        //GLFW.glfwWindowHint(GLFW.GLFW_OPENGL_PROFILE, GLFW.GLFW_OPENGL_CORE_PROFILE);
+        GLFW.glfwWindowHint(GLFW.GLFW_OPENGL_PROFILE, GLFW.GLFW_OPENGL_CORE_PROFILE);
+        GLFW.glfwWindowHint(GLFW.GLFW_OPENGL_FORWARD_COMPAT, GL11.GL_TRUE);
 
         //creates the window
         //to change name,width and height of window change them inside the engine settings
@@ -46,20 +48,18 @@ public class WindowManager {
         glfwSwapInterval(1); //vsync
 
         glfwShowWindow(window); //show the window
-    }
 
-    public void updateWindow() {
-        GL.createCapabilities();
+        GL.createCapabilities();//Enable OPENGL
 
         //set Color Clear
         glClearColor(0.0f,0.0f,0.0f,0.0f);
 
+    }
 
-        while ( !glfwWindowShouldClose(window) ) {
-            glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); //clear framebuffer
-            glfwSwapBuffers(window); // swap color buffers
-            glfwPollEvents();
-        }
+    public void updateWindow() {
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); //clear framebuffer
+        glfwSwapBuffers(window); // swap color buffers
+        glfwPollEvents();
     }
 
     public void closeWindow() {
@@ -68,5 +68,9 @@ public class WindowManager {
 
         glfwTerminate();
         glfwSetErrorCallback(null).free();
+    }
+
+    public long getWindow() {
+        return window;
     }
 }

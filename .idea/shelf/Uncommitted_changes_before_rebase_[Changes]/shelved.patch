@@ -1,0 +1,87 @@
+Index: src/main/java/voidEngine/WindowManager.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package voidEngine;\n\nimport engineTester.MainGameLoop;\nimport org.lwjgl.glfw.*;\nimport org.lwjgl.opengl.GL;\nimport voidEngine.utils.EngineSettings;\n\nimport static org.lwjgl.glfw.Callbacks.*;\nimport static org.lwjgl.glfw.GLFW.*;\nimport static org.lwjgl.opengl.GL11.*;\nimport static org.lwjgl.system.MemoryUtil.NULL;\n\n\npublic class WindowManager {\n    private long window;\n    private final EngineSettings Config = MainGameLoop.getConfig();\n    public void createWindow() {\n        GLFWErrorCallback.createPrint(System.err).set();\n\n        if (!glfwInit()) {\n            throw new IllegalStateException(\"Can't initialize GLFW\");\n        }\n\n        glfwDefaultWindowHints();\n        glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);\n        glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);\n        GLFW.glfwWindowHint(GLFW.GLFW_CONTEXT_VERSION_MAJOR, 3);\n        GLFW.glfwWindowHint(GLFW.GLFW_CONTEXT_VERSION_MINOR, 2);\n        //GLFW.glfwWindowHint(GLFW.GLFW_OPENGL_PROFILE, GLFW.GLFW_OPENGL_CORE_PROFILE);\n\n        //creates the window\n        //to change name,width and height of window change them inside the engine settings\n        window = glfwCreateWindow(Config.getWIDTH(), Config.getHEIGHT(), Config.getWindowName(), NULL, NULL);\n\n        if (window == NULL) {\n            throw new RuntimeException(\"Failed to create GLFW window\");\n        }\n\n        glfwSetKeyCallback(window,(window, key, scancode, action, mods) -> {\n            if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS) {\n                glfwSetWindowShouldClose(window, true);\n            }\n        });\n\n        glfwMakeContextCurrent(window); //set opengl context state to current\n        glfwSwapInterval(1); //vsync\n\n        glfwShowWindow(window); //show the window\n    }\n\n    public void updateWindow() {\n        GL.createCapabilities();\n\n        //set Color Clear\n        glClearColor(0.0f,0.0f,0.0f,0.0f);\n\n\n        while ( !glfwWindowShouldClose(window) ) {\n            glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); //clear framebuffer\n            glfwSwapBuffers(window); // swap color buffers\n            glfwPollEvents();\n        }\n    }\n\n    public void closeWindow() {\n        glfwFreeCallbacks(window);\n        glfwDestroyWindow(window);\n\n        glfwTerminate();\n        glfwSetErrorCallback(null).free();\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/voidEngine/WindowManager.java b/src/main/java/voidEngine/WindowManager.java
+--- a/src/main/java/voidEngine/WindowManager.java	(revision 9fc61c416ef29d7460e367dd4ea1e535d0d15e23)
++++ b/src/main/java/voidEngine/WindowManager.java	(date 1696679682117)
+@@ -13,7 +13,6 @@
+ 
+ public class WindowManager {
+     private long window;
+-    private final EngineSettings Config = MainGameLoop.getConfig();
+     public void createWindow() {
+         GLFWErrorCallback.createPrint(System.err).set();
+ 
+@@ -30,7 +29,7 @@
+ 
+         //creates the window
+         //to change name,width and height of window change them inside the engine settings
+-        window = glfwCreateWindow(Config.getWIDTH(), Config.getHEIGHT(), Config.getWindowName(), NULL, NULL);
++        window = glfwCreateWindow(640, 480, "asd", NULL, NULL);
+ 
+         if (window == NULL) {
+             throw new RuntimeException("Failed to create GLFW window");
+Index: src/main/java/engineTester/MainGameLoop.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package engineTester;\n\nimport voidEngine.WindowManager;\nimport voidEngine.utils.EngineSettings;\n\npublic class MainGameLoop {\n    private static EngineSettings Config;\n    public static void main(String[] args) {\n        WindowManager Window = new WindowManager();\n        Config = new EngineSettings(\"VoidEngine\",640,480);\n        Window.createWindow();\n        Window.updateWindow();\n        Window.closeWindow();\n    }\n\n    public static EngineSettings getConfig() {\n        return Config;\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/engineTester/MainGameLoop.java b/src/main/java/engineTester/MainGameLoop.java
+--- a/src/main/java/engineTester/MainGameLoop.java	(revision 9fc61c416ef29d7460e367dd4ea1e535d0d15e23)
++++ b/src/main/java/engineTester/MainGameLoop.java	(date 1696679759495)
+@@ -4,16 +4,16 @@
+ import voidEngine.utils.EngineSettings;
+ 
+ public class MainGameLoop {
+-    private static EngineSettings Config;
++    private static EngineSettings config;
+     public static void main(String[] args) {
++        config = new EngineSettings("VoidEngine",640,480);
+         WindowManager Window = new WindowManager();
+-        Config = new EngineSettings("VoidEngine",640,480);
+         Window.createWindow();
+         Window.updateWindow();
+         Window.closeWindow();
+     }
+ 
+     public static EngineSettings getConfig() {
+-        return Config;
++        return config;
+     }
+ }
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"a930d992-70a4-424d-821a-c40834e40b07\" name=\"Changes\" comment=\"Engine Rewrite\">\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/engineTester/MainGameLoop.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/engineTester/MainGameLoop.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/voidEngine/EngineSettings.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/voidEngine/utils/EngineSettings.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/voidEngine/WindowManager.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/voidEngine/WindowManager.java\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"ExternalProjectsData\">\n    <projectState path=\"$PROJECT_DIR$\">\n      <ProjectState />\n    </projectState>\n  </component>\n  <component name=\"FileTemplateManagerImpl\">\n    <option name=\"RECENT_TEMPLATES\">\n      <list>\n        <option value=\"Class\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"ProjectId\" id=\"2W9itgpFdnYTsghBGynhhL0kYs0\" />\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\">{\n  &quot;keyToString&quot;: {\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\n    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,\n    &quot;git-widget-placeholder&quot;: &quot;master&quot;,\n    &quot;onboarding.tips.debug.path&quot;: &quot;/home/sayori/IdeaProjects/VoidEngine/src/main/java/org/example/Main.java&quot;,\n    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,\n    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,\n    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,\n    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;\n  }\n}</component>\n  <component name=\"RunManager\">\n    <configuration name=\"MainGameLoop\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\n      <option name=\"MAIN_CLASS_NAME\" value=\"engineTester.MainGameLoop\" />\n      <module name=\"VoidEngine.main\" />\n      <extension name=\"coverage\">\n        <pattern>\n          <option name=\"PATTERN\" value=\"engineTester.*\" />\n          <option name=\"ENABLED\" value=\"true\" />\n        </pattern>\n      </extension>\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <recent_temporary>\n      <list>\n        <item itemvalue=\"Application.MainGameLoop\" />\n      </list>\n    </recent_temporary>\n  </component>\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"a930d992-70a4-424d-821a-c40834e40b07\" name=\"Changes\" comment=\"\" />\n      <created>1696151413125</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1696151413125</updated>\n    </task>\n    <task id=\"LOCAL-00001\" summary=\"Start\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1696151474808</created>\n      <option name=\"number\" value=\"00001\" />\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1696151474808</updated>\n    </task>\n    <task id=\"LOCAL-00002\" summary=\"Black Window\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1696156181035</created>\n      <option name=\"number\" value=\"00002\" />\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1696156181035</updated>\n    </task>\n    <option name=\"localTasksCounter\" value=\"3\" />\n    <servers />\n  </component>\n  <component name=\"Vcs.Log.Tabs.Properties\">\n    <option name=\"TAB_STATES\">\n      <map>\n        <entry key=\"MAIN\">\n          <value>\n            <State />\n          </value>\n        </entry>\n      </map>\n    </option>\n  </component>\n  <component name=\"VcsManagerConfiguration\">\n    <MESSAGE value=\"Start\" />\n    <MESSAGE value=\"Black Window\" />\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Black Window\" />\n  </component>\n  <component name=\"XDebuggerManager\">\n    <breakpoint-manager>\n      <breakpoints>\n        <line-breakpoint enabled=\"true\" type=\"java-line\">\n          <url>file://$PROJECT_DIR$/src/main/java/org/example/Main.java</url>\n          <line>4</line>\n          <option name=\"timeStamp\" value=\"1\" />\n        </line-breakpoint>\n      </breakpoints>\n    </breakpoint-manager>\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 9fc61c416ef29d7460e367dd4ea1e535d0d15e23)
++++ b/.idea/workspace.xml	(date 1696679740502)
+@@ -7,7 +7,6 @@
+     <list default="true" id="a930d992-70a4-424d-821a-c40834e40b07" name="Changes" comment="Engine Rewrite">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/java/engineTester/MainGameLoop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engineTester/MainGameLoop.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/voidEngine/EngineSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/voidEngine/utils/EngineSettings.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/java/voidEngine/WindowManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/voidEngine/WindowManager.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+@@ -28,6 +27,11 @@
+     </option>
+   </component>
+   <component name="Git.Settings">
++    <option name="RECENT_BRANCH_BY_REPOSITORY">
++      <map>
++        <entry key="$PROJECT_DIR$" value="old-engine" />
++      </map>
++    </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+   </component>
+   <component name="ProjectId" id="2W9itgpFdnYTsghBGynhhL0kYs0" />
