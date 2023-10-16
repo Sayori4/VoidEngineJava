@@ -1,25 +1,28 @@
-package voidEngine;
+package voidEngine.rendering;
 
+import engineTester.MainGameLoop;
 import org.lwjgl.BufferUtils;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL15;
 import org.lwjgl.opengl.GL20;
 import org.lwjgl.opengl.GL30;
-import voidEngine.utils.RawModel;
+import voidEngine.utils.Logger;
 
 import java.nio.FloatBuffer;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Loader {
+    private final Logger logger = MainGameLoop.getLogger();
 
-    private List<Integer> vaos = new ArrayList<Integer>();
-    private List<Integer> vbos = new ArrayList<Integer>();
+    private final List<Integer> vaos = new ArrayList<>();
+    private final List<Integer> vbos = new ArrayList<>();
 
     public RawModel loadToVAO(float[] positions) {
         int vaoID = createVAO();
         storeDataInAttributeList(0,positions);
         unbindVAO();
+        logger.log("Successfully loaded a model");
         return new RawModel(vaoID, positions.length / 3);
     }
 
@@ -30,6 +33,7 @@ public class Loader {
         for (int vbo:vbos) {
             GL15.glDeleteBuffers(vbo);
         }
+        logger.log("Successfully disposed of all VAOs and VBOs");
     }
 
     private int createVAO() {
