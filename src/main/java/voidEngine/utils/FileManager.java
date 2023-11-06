@@ -13,7 +13,6 @@ public class FileManager {
             }
             reader.close();
         } catch (IOException e) {
-            System.err.println("Could not read file!");
             e.printStackTrace();
         }
         return fileI.toString();
@@ -28,7 +27,6 @@ public class FileManager {
             }
             writer.close();
         } catch (IOException e) {
-            System.err.println("Could not write file!");
             e.printStackTrace();
         }
     }
