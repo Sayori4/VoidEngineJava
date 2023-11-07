@@ -10,20 +10,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a930d992-70a4-424d-821a-c40834e40b07" name="Changes" comment="Disabled logger, changed rendering to allow rendering with indicies and added shader support">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/VoidEngine_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/VoidEngine_jar2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/stat.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/engineTester/shaders/fragmentShader.glsl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/engineTester/shaders/vertexShader.glsl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/voidEngine/shaders/ShaderLoader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/voidEngine/shaders/StaticShader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/voidEngine/ImGui/ImGuiLayer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/voidEngine/ImGui/ImGuiRunner.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/engineTester/MainGameLoop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engineTester/MainGameLoop.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/voidEngine/WindowManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/voidEngine/WindowManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/voidEngine/rendering/Loader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/voidEngine/rendering/Loader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/voidEngine/rendering/Renderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/voidEngine/rendering/Renderer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/voidEngine/utils/FileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/voidEngine/utils/FileManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/voidEngine/shaders/ShaderLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/voidEngine/shaders/ShaderLoader.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,6 +96,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="voidEngine.ImGui" />
       <recent name="voidEngine.Rendering" />
     </key>
   </component>
@@ -175,7 +169,15 @@
       <option name="project" value="LOCAL" />
       <updated>1697487859276</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Disabled logger, changed rendering to allow rendering with indicies and added shader support">
+      <option name="closed" value="true" />
+      <created>1699293411895</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1699293411895</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

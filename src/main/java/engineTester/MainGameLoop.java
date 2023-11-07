@@ -1,5 +1,7 @@
 package engineTester;
 
+import voidEngine.ImGui.ImGuiLayer;
+import voidEngine.ImGui.ImGuiRunner;
 import voidEngine.rendering.Loader;
 import voidEngine.rendering.Renderer;
 import voidEngine.WindowManager;
@@ -17,6 +19,9 @@ public class MainGameLoop {
         WindowManager Window = new WindowManager();
 
         Window.createWindow();
+        ImGuiRunner ImGUI = new ImGuiRunner(Window.getWindow(), new ImGuiLayer());
+
+        ImGUI.init();
 
         Loader loader = new Loader();
         Renderer renderer = new Renderer();
@@ -36,6 +41,7 @@ public class MainGameLoop {
 
         while ( !glfwWindowShouldClose(Window.getWindow()) ) {
             renderer.prepare();
+            ImGUI.render();
             shader.start();
             renderer.render(model);
             shader.stop();
@@ -44,11 +50,11 @@ public class MainGameLoop {
 
         shader.cleanUp();
         loader.cleanUp();
+        ImGUI.cleanUp();
         Window.closeWindow();
     }
 
     public static EngineSettings getConfig() {
         return config;
     }
-
 }

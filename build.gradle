@@ -7,6 +7,7 @@ plugins {
 project.ext.lwjglVersion = "3.3.3"
 project.ext.jomlVersion = "1.10.0"
 project.ext.jomlPrimVersion = "1.10.0"
+project.ext.imGUIVersion = "1.86.11"
 
 switch (OperatingSystem.current()) {
     case OperatingSystem.LINUX:
@@ -14,6 +15,9 @@ switch (OperatingSystem.current()) {
         break
     case OperatingSystem.MAC_OS:
         project.ext.lwjglNatives = "natives-macos"
+        break
+    case OperatingSystem.WINDOWS:
+        project.ext.lwjglNatives = "natives-windows"
         break
 }
 
@@ -25,6 +29,10 @@ repositories {
 }
 
 dependencies {
+    implementation "io.github.spair:imgui-java-app:$imGUIVersion"
+    implementation "io.github.spair:imgui-java-lwjgl3:$imGUIVersion"
+    implementation "io.github.spair:imgui-java-$lwjglNatives:$imGUIVersion"
+
     implementation platform("org.lwjgl:lwjgl-bom:$lwjglVersion")
 
     implementation "org.lwjgl:lwjgl"
@@ -107,6 +115,7 @@ dependencies {
     runtimeOnly "org.lwjgl:lwjgl-tinyfd::$lwjglNatives"
     runtimeOnly "org.lwjgl:lwjgl-tootle::$lwjglNatives"
     runtimeOnly "org.lwjgl:lwjgl-vma::$lwjglNatives"
+    if (lwjglNatives == "natives-macos") runtimeOnly "org.lwjgl:lwjgl-vulkan::$lwjglNatives"
     runtimeOnly "org.lwjgl:lwjgl-xxhash::$lwjglNatives"
     runtimeOnly "org.lwjgl:lwjgl-yoga::$lwjglNatives"
     runtimeOnly "org.lwjgl:lwjgl-zstd::$lwjglNatives"
