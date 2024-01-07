@@ -1,13 +1,11 @@
-package voidEngine.ImGui;
+package engineTester.stuff;
 
 import imgui.ImGui;
 
 public class ImGuiLayer {
     public void imgui() {
-        ImGui.begin("ImGUI");
-
+        ImGui.begin("ImGui");
         ImGui.text("Works on my PC");
-
         ImGui.end();
     }
 }

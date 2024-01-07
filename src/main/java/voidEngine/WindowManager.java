@@ -1,6 +1,5 @@
 package voidEngine;
 
-import engineTester.MainGameLoop;
 import org.lwjgl.glfw.*;
 import org.lwjgl.opengl.GL;
 import voidEngine.utils.EngineSettings;
@@ -13,7 +12,7 @@ import static org.lwjgl.system.MemoryUtil.NULL;
 
 public class WindowManager {
     private long window;
-    private final EngineSettings config = MainGameLoop.getConfig();
+    private final EngineSettings config = new EngineSettings("VoidEngine",640,480);
     public void createWindow() {
         GLFWErrorCallback.createPrint(System.err).set();
 
@@ -67,5 +66,9 @@ public class WindowManager {
 
     public long getWindow() {
         return window;
+    }
+
+    public EngineSettings getConfig() {
+        return config;
     }
 }

@@ -9,14 +9,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a930d992-70a4-424d-821a-c40834e40b07" name="Changes" comment="Disabled logger, changed rendering to allow rendering with indicies and added shader support">
-      <change afterPath="$PROJECT_DIR$/src/main/java/voidEngine/ImGui/ImGuiLayer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/voidEngine/ImGui/ImGuiRunner.java" afterDir="false" />
+    <list default="true" id="a930d992-70a4-424d-821a-c40834e40b07" name="Changes" comment="EngineSettings get called in the WindowManager instead of the MainGameLoop, Switched ImGuiLayer to be in the tester package instead of the engine package, changed the shape rendered and changed the fragmentShader.">
+      <change afterPath="$PROJECT_DIR$/src/main/java/engineTester/stuff/ImGuiLayer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/engineTester/MainGameLoop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engineTester/MainGameLoop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/engineTester/shaders/vertexShader.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engineTester/shaders/vertexShader.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/voidEngine/ImGui/ImGuiLayer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/voidEngine/ImGui/ImGuiRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/voidEngine/ImGui/ImGuiRunner.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/voidEngine/WindowManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/voidEngine/WindowManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/voidEngine/shaders/ShaderLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/voidEngine/shaders/ShaderLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/voidEngine/utils/EngineSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/voidEngine/utils/EngineSettings.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -177,7 +179,15 @@
       <option name="project" value="LOCAL" />
       <updated>1699293411895</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Added ImGUI and Windows support (should work)">
+      <option name="closed" value="true" />
+      <created>1699383318338</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1699383318338</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -185,7 +195,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="old-engine" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -198,7 +220,10 @@
     <MESSAGE value="Rendering white square" />
     <MESSAGE value="putting the rendering stuff into the rendering package, and added a Logger." />
     <MESSAGE value="Disabled logger, changed rendering to allow rendering with indicies and added shader support" />
-    <option name="LAST_COMMIT_MESSAGE" value="Disabled logger, changed rendering to allow rendering with indicies and added shader support" />
+    <MESSAGE value="Added ImGUI" />
+    <MESSAGE value="Added ImGUI and Windows support (should work)" />
+    <MESSAGE value="EngineSettings get called in the WindowManager instead of the MainGameLoop, Switched ImGuiLayer to be in the tester package instead of the engine package, changed the shape rendered and changed the fragmentShader." />
+    <option name="LAST_COMMIT_MESSAGE" value="EngineSettings get called in the WindowManager instead of the MainGameLoop, Switched ImGuiLayer to be in the tester package instead of the engine package, changed the shape rendered and changed the fragmentShader." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

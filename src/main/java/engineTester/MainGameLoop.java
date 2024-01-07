@@ -1,22 +1,22 @@
 package engineTester;
 
-import voidEngine.ImGui.ImGuiLayer;
+import engineTester.stuff.ImGuiLayer;
 import voidEngine.ImGui.ImGuiRunner;
 import voidEngine.rendering.Loader;
 import voidEngine.rendering.Renderer;
 import voidEngine.WindowManager;
 import voidEngine.shaders.StaticShader;
-import voidEngine.utils.EngineSettings;
 import voidEngine.rendering.RawModel;
 
 import static org.lwjgl.glfw.GLFW.glfwWindowShouldClose;
 
 public class MainGameLoop {
-    private static EngineSettings config;
     public static void main(String[] args) {
 
-        config = new EngineSettings("VoidEngine",640,480);
         WindowManager Window = new WindowManager();
+        // EngineSettings config = Window.getConfig();
+
+        //config.setResolution(1280, 720);
 
         Window.createWindow();
         ImGuiRunner ImGUI = new ImGuiRunner(Window.getWindow(), new ImGuiLayer());
@@ -28,23 +28,25 @@ public class MainGameLoop {
         StaticShader shader = new StaticShader();
 
         float[] vertices = {
-                 0.0f,  0.5f, 0f,
                 -0.5f, -0.5f, 0f,
                  0.5f, -0.5f, 0f,
+                -0.5f,  0.5f, 0f,
+                 0.5f,  0.5f, 0f
         };
 
         int[] indices = {
-                0,1,2
+                0,1,2,
+                2,1,3
         };
 
         RawModel model = loader.loadToVAO(vertices, indices);
 
         while ( !glfwWindowShouldClose(Window.getWindow()) ) {
             renderer.prepare();
-            ImGUI.render();
             shader.start();
             renderer.render(model);
             shader.stop();
+            ImGUI.render();
             Window.updateWindow();
         }
 
@@ -52,9 +54,5 @@ public class MainGameLoop {
         loader.cleanUp();
         ImGUI.cleanUp();
         Window.closeWindow();
-    }
-
-    public static EngineSettings getConfig() {
-        return config;
     }
 }
