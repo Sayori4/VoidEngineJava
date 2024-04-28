@@ -1,8 +1,8 @@
 package voidEngine.utils;
 
 public class EngineSettings {
-    private final String windowName;
-    private final int WIDTH,HEIGHT;
+    private String windowName;
+    private int WIDTH,HEIGHT;
 
     public EngineSettings(String windowName, int WIDTH, int HEIGHT) {
         this.windowName = windowName;
@@ -20,5 +20,14 @@ public class EngineSettings {
 
     public int getHEIGHT() {
         return HEIGHT;
+    }
+
+    public void setResolution(int WIDTH, int HEIGHT) {
+        this.WIDTH = WIDTH;
+        this.HEIGHT = HEIGHT;
+    }
+
+    public void setName(String windowName) {
+        this.windowName = windowName;
     }
 }

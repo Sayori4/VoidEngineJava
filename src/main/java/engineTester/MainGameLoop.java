@@ -1,54 +1,58 @@
 package engineTester;
 
+import engineTester.stuff.ImGuiLayer;
+import voidEngine.ImGui.ImGuiRunner;
 import voidEngine.rendering.Loader;
 import voidEngine.rendering.Renderer;
 import voidEngine.WindowManager;
-import voidEngine.utils.EngineSettings;
+import voidEngine.shaders.StaticShader;
 import voidEngine.rendering.RawModel;
-import voidEngine.utils.Logger;
 
 import static org.lwjgl.glfw.GLFW.glfwWindowShouldClose;
 
 public class MainGameLoop {
-    private static EngineSettings config;
-    private static Logger logger;
     public static void main(String[] args) {
 
-        config = new EngineSettings("VoidEngine",640,480);
-        logger = new Logger("VoidEngineLog");
         WindowManager Window = new WindowManager();
+        // EngineSettings config = Window.getConfig();
+
+        //config.setResolution(1280, 720);
 
         Window.createWindow();
+        ImGuiRunner ImGUI = new ImGuiRunner(Window.getWindow(), new ImGuiLayer());
+
+        ImGUI.init();
 
         Loader loader = new Loader();
-        logger.log("Initialized the loader");
         Renderer renderer = new Renderer();
-        logger.log("Initialized the renderer");
+        StaticShader shader = new StaticShader();
 
         float[] vertices = {
-                 0.0f,  0.5f, 0f,
                 -0.5f, -0.5f, 0f,
                  0.5f, -0.5f, 0f,
+                -0.5f,  0.5f, 0f,
+                 0.5f,  0.5f, 0f
         };
 
-        RawModel model = loader.loadToVAO(vertices);
+        int[] indices = {
+                0,1,2,
+                2,1,3
+        };
+
+        RawModel model = loader.loadToVAO(vertices, indices);
 
         while ( !glfwWindowShouldClose(Window.getWindow()) ) {
             renderer.prepare();
+            shader.start();
             renderer.render(model);
+            shader.stop();
+            ImGUI.render();
             Window.updateWindow();
         }
 
+        shader.cleanUp();
         loader.cleanUp();
+        ImGUI.cleanUp();
         Window.closeWindow();
-        logger.save();
-    }
-
-    public static EngineSettings getConfig() {
-        return config;
-    }
-
-    public static Logger getLogger() {
-        return logger;
     }
 }
