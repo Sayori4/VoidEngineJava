@@ -1,6 +1,8 @@
-package voidEngine.shaders;
+package engineTester.shaders;
 
-public class StaticShader extends ShaderLoader{
+import voidEngine.shaders.ShaderLoader;
+
+public class StaticShader extends ShaderLoader {
 
     private static final String VERTEX_FILE = "src/main/java/engineTester/shaders/vertexShader.glsl";
     private static final String FRAGMENT_FILE = "src/main/java/engineTester/shaders/fragmentShader.glsl";

@@ -1,11 +1,11 @@
 package engineTester;
 
-import engineTester.stuff.ImGuiLayer;
+import engineTester.stuff.ImGuiMenu;
 import voidEngine.ImGui.ImGuiRunner;
 import voidEngine.rendering.Loader;
 import voidEngine.rendering.Renderer;
 import voidEngine.WindowManager;
-import voidEngine.shaders.StaticShader;
+import engineTester.shaders.StaticShader;
 import voidEngine.rendering.RawModel;
 
 import static org.lwjgl.glfw.GLFW.glfwWindowShouldClose;
@@ -19,7 +19,7 @@ public class MainGameLoop {
         //config.setResolution(1280, 720);
 
         Window.createWindow();
-        ImGuiRunner ImGUI = new ImGuiRunner(Window.getWindow(), new ImGuiLayer());
+        ImGuiRunner ImGUI = new ImGuiRunner(Window.getWindow(), new ImGuiMenu());
 
         ImGUI.init();
 

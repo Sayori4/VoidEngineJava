@@ -1,6 +1,5 @@
 package voidEngine.ImGui;
 
-import engineTester.stuff.ImGuiLayer;
 import imgui.ImGui;
 import imgui.flag.ImGuiConfigFlags;
 import imgui.gl3.ImGuiImplGl3;

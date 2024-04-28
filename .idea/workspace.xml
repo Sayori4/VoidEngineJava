@@ -10,15 +10,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a930d992-70a4-424d-821a-c40834e40b07" name="Changes" comment="EngineSettings get called in the WindowManager instead of the MainGameLoop, Switched ImGuiLayer to be in the tester package instead of the engine package, changed the shape rendered and changed the fragmentShader.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/engineTester/stuff/ImGuiLayer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/voidEngine/ImGui/ImGuiLayer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/engineTester/MainGameLoop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engineTester/MainGameLoop.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/engineTester/shaders/vertexShader.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engineTester/shaders/vertexShader.glsl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/voidEngine/ImGui/ImGuiLayer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/engineTester/stuff/ImGuiLayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engineTester/stuff/ImGuiMenu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/voidEngine/ImGui/ImGuiRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/voidEngine/ImGui/ImGuiRunner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/voidEngine/WindowManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/voidEngine/WindowManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/voidEngine/shaders/ShaderLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/voidEngine/shaders/ShaderLoader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/voidEngine/utils/EngineSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/voidEngine/utils/EngineSettings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/voidEngine/shaders/StaticShader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engineTester/shaders/StaticShader.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +50,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="rewrite" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -81,29 +78,39 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;old-engine&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/sayori/IdeaProjects/VoidEngine/out/artifacts/VoidEngine_jar/VoidEngine.jar&quot;,
-    &quot;onboarding.tips.debug.path&quot;: &quot;/home/sayori/IdeaProjects/VoidEngine/src/main/java/org/example/Main.java&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Gradle.VoidEngineJava [:MainGameLoop.main()].executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "old-engine",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/home/sayori/IdeaProjects/VoidEngine",
+    "onboarding.tips.debug.path": "/home/sayori/IdeaProjects/VoidEngine/src/main/java/org/example/Main.java",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="voidEngine.ImGui" />
       <recent name="voidEngine.Rendering" />
     </key>
   </component>
-  <component name="RunManager">
-    <configuration name="MainGameLoop" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Application.Run">
+    <configuration name="Run (macOS)" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="engineTester.MainGameLoop" />
+      <module name="VoidEngine.main" />
+      <option name="VM_PARAMETERS" value="-XstartOnFirstThread" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Run" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="engineTester.MainGameLoop" />
       <module name="VoidEngine.main" />
       <extension name="coverage">
@@ -116,11 +123,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.MainGameLoop" />
-      </list>
-    </recent_temporary>
+    <list>
+      <item itemvalue="Application.Run" />
+      <item itemvalue="Application.Run (macOS)" />
+    </list>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-17.0.10-corretto-17.0.10-4caba194b151-ab7203c4" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
